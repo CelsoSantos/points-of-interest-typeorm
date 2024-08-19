@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "es5",
+      "es6"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "pretty": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "target": "es5",
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false
+  },
+  "include": ["src/**/*.ts", "src/**/*.csv"],
+  "exclude": ["node_modules", "src/**/*.spec.ts"]
+}

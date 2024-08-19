@@ -1,0 +1,4 @@
+CREATE USER postgresql WITH PASSWORD 'postgresql';
+CREATE USER celso WITH PASSWORD 'celso';
+CREATE DATABASE challenge;
+GRANT ALL PRIVILEGES ON DATABASE challenge TO celso;
