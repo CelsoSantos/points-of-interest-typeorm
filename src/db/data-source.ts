@@ -4,10 +4,7 @@ import { DataSource } from "typeorm"
 import * as dotenv from "dotenv";
 dotenv.config();
 
-import { PointOfInterest } from "../entity/PointOfInterest"
-import { Address } from "../entity/Address";
-import { FuelProduct } from "../entity/FuelProduct";
-import { Pump } from "../entity/Pump";
+import { Address, PointOfInterest, Pump, BusinessHours, FuelProduct } from "../models"
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -18,7 +15,7 @@ export const AppDataSource = new DataSource({
   port: Number(process.env.POSTGRES_PORT) || 5432,
   synchronize: true,
   logging: false,
-  entities: [Address, FuelProduct, PointOfInterest, Pump],
+  entities: [Address, BusinessHours, FuelProduct, PointOfInterest, Pump],
   migrations: [],
   subscribers: [],
 })

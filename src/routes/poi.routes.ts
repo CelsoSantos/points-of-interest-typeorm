@@ -14,6 +14,9 @@ export class PointsOfInterestRoutes extends CommonRoutesConfig {
     this.app.route(`/points-of-interest`)
       .get(poiController.list)
 
+    this.app.route(`/points-of-interest/create`)
+      .put(poiController.save);
+
     this.app.route(`/points-of-interest/:id`)
       .all((req: express.Request, res: express.Response, next: express.NextFunction) => {
         // this middleware function runs before any request to /restaurants/:restaurantId
@@ -22,8 +25,7 @@ export class PointsOfInterestRoutes extends CommonRoutesConfig {
         next();
       })
       .get(poiController.getById)
-      .put(poiController.save)
-      .patch(poiController.save) //TODO: make an update handler
+      .patch(poiController.update)
       .delete(poiController.remove);
 
     return this.app;
