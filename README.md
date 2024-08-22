@@ -11,7 +11,7 @@ This is a small Node.js + Express application (in Typescript) that will manage a
 ## Take-away notes
 
 - TypeORM is a new tool to me and proved a little challenging with the TS configurations and this ended up costing around 40 minutes here-and-there overall.
-- There is only basic functionality implemented which hasn't been properly tested (is in TODO)
+- There is only basic functionality implemented which hasn't been properly tested
 - Overall, the time given to the challenge felt a little short, especially due to TypeORM, but that's not an excuse. More could have been achieved
 
 ## Install

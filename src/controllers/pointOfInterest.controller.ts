@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express"
+import { Request, Response } from "express"
 import { AppDataSource } from "../db/data-source";
 import { PointOfInterest, Status } from "../models";
 import { HttpStatusCode } from "../utils/HttpStatusCodes.enum";
@@ -7,16 +7,6 @@ export class PointsOfInterestController {
   private poiRepository = AppDataSource.getRepository(PointOfInterest);
 
   list = async (request: Request, response: Response) => {
-    // const result = await this.poiRepository.find({
-    //   relations: {
-    //     address: true,
-    //     pumps: {
-    //       fuel_products: true
-    //     },
-    //     business_hours: true
-    //   }
-    // });
-
     let page: number = 0;
     let per_page: number = 10;
 
@@ -34,7 +24,7 @@ export class PointsOfInterestController {
 
     const skipItems = page * per_page;
 
-    const result = await AppDataSource.getRepository(PointOfInterest)
+    const result = await this.poiRepository
       .createQueryBuilder("pointOfInterest")
       .innerJoinAndSelect("pointOfInterest.address", "address")
       .innerJoinAndSelect("pointOfInterest.pumps", "pump")

@@ -15,7 +15,7 @@ import { PointsOfInterestRoutes } from "./routes/poi.routes";
 import { HealthRoutes } from "./routes/health.routes";
 import { AppDataSource } from "./db/data-source";
 import { dataInit } from "./db/data-init";
-import { shutdown, startServer } from "./server";
+import { startServer, shutdownServer } from "./server";
 
 const app: Express = express();
 const routes: Array<CommonRoutesConfig> = [];
@@ -37,7 +37,7 @@ AppDataSource
     await dataInit();
     console.log("Data Source has been initialized!")
     // Start server
-    startServer();
+    startServer()
   })
   .catch((err) => {
     console.error("Error during Data Source initialization:", err)
@@ -45,7 +45,7 @@ AppDataSource
 
 process.on('SIGTERM', async () => {
   console.log('SIGTERM signal received: closing HTTP server')
-  shutdown();
+  shutdownServer();
   await AppDataSource.destroy()
 })
 

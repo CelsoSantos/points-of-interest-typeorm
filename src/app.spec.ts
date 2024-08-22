@@ -1,6 +1,6 @@
 import app from "./app";
 import request from "supertest";
-import { shutdown, startServer } from "./server"
+import { shutdownServer } from "./server"
 import { HttpStatusCode } from "./utils/HttpStatusCodes.enum"
 import { AppDataSource } from "./db/data-source";
 // import { dataInit } from "./db/data-init";
@@ -19,9 +19,11 @@ import { AppDataSource } from "./db/data-source";
 // })
 
 afterAll(async () => {
-  await AppDataSource.destroy();
-  shutdown();
+  AppDataSource.destroy();
+  shutdownServer();
 })
+
+jest.useFakeTimers({legacyFakeTimers: true});
 
 describe("GET /", () => {
   it('responds with "Hello! My name is Celso Santos"', async () => {
